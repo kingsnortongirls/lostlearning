@@ -4,7 +4,7 @@
 const U=window.LOST_UNIT,app=document.getElementById("app"),paper=document.getElementById("paper");
 if(!U){app.textContent="Unit content is not available.";return;}
 let active=-1,name="",quizScore=null,shots=[];
-const year=U.year||7,yearHome=year===7?"year7.html":"year8.html";
+const year=U.year||7,yearHome="year"+year+".html";
 function el(id){return document.getElementById(id)}
 function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function fmt(v){return esc(v).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\x60([^\x60]+)\x60/g,"<code>$1</code>").replace(/\n/g,"<br>")}

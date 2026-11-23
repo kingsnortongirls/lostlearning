@@ -33,7 +33,7 @@ header{background:var(--navy);color:white}header .shell{display:flex;align-items
 <script>
 "use strict";
 const lessons={
-hardware:{num:1,title:"Hardware",time:"20–30 minutes",intro:"Find out what is inside a computer, what each part does and how a computer turns input into output.",
+hardware:{num:1,icon:"cpu",title:"Hardware",time:"20–30 minutes",intro:"Find out what is inside a computer, what each part does and how a computer turns input into output.",
 knowledge:[
 ["Hardware means physical parts","Hardware is anything you can physically touch, such as a keyboard, monitor, motherboard or CPU. Software means the programs and instructions a computer runs."],
 ["Input, process and output","Input devices send data INTO a computer. The CPU processes data by following instructions. Output devices present information to the user."],
@@ -56,7 +56,7 @@ knowledge:[
 "A calculator receives 3 and 4, multiplies them and displays 12. Label the input, process and output.",
 "Challenge: Explain why a touchscreen is both an input and an output device."
 ]},
-binary:{num:2,title:"Binary",time:"25–35 minutes",intro:"Learn why computers use 0s and 1s, and practise converting between binary and denary.",
+binary:{num:2,icon:"brain",title:"Binary",time:"25–35 minutes",intro:"Learn why computers use 0s and 1s, and practise converting between binary and denary.",
 knowledge:[
 ["Binary uses only 0 and 1","Denary (also called decimal) is base 10. Binary is base 2. Computers use electronic circuits with two distinct states, represented by 0 and 1."],
 ["Every column has a place value","From right to left, binary columns are 1, 2, 4, 8, 16, 32, 64, 128. Each column is double the one to its right."],
@@ -102,17 +102,17 @@ function render(){
 const unitCards=[
   {num:1,title:"Under the Hood of a Computer",desc:"Hardware, input and output, memory, storage and binary.",count:2,link:"#unit1"},
   {num:2,title:"Thinking Like a Computer Scientist",desc:"Dr John Snow, evidence, problem-solving and evacuation planning.",count:2,link:"unit2.html"},
-  {num:3,title:"E-Safety",desc:"Online friendships, sharing images, passwords and personal information.",count:3,link:"unit3.html"},
-  {num:4,title:"Drawing and Manipulating Shapes",desc:"Algorithms, Scratch pen, patterns and Python Turtle.",count:5,link:"unit4.html"},
-  {num:5,title:"Creating an Animation",desc:"Dance sequences, Scratch procedures, variables and selection.",count:3,link:"unit5.html"},
-  {num:6,title:"Back to the Future",desc:"Alan Turing, Tim Berners-Lee, logic gates and sorting algorithms.",count:4,link:"unit6.html"},
-  {num:7,title:"Introduction to Python",desc:"Print, comments, variables, arithmetic and selection.",count:4,link:"unit7.html"},
-  {num:8,title:"Spreadsheets",desc:"Formatting, formulas, profit, models, functions and charts.",count:5,link:"unit8.html"}
+  {num:3,icon:"shield",title:"E-Safety",desc:"Online friendships, sharing images, passwords and personal information.",count:3,link:"unit3.html"},
+  {num:4,icon:"pen-tool",title:"Drawing and Manipulating Shapes",desc:"Algorithms, Scratch pen, patterns and Python Turtle.",count:5,link:"unit4.html"},
+  {num:5,icon:"clapperboard",title:"Creating an Animation",desc:"Dance sequences, Scratch procedures, variables and selection.",count:3,link:"unit5.html"},
+  {num:6,icon:"history",title:"Back to the Future",desc:"Alan Turing, Tim Berners-Lee, logic gates and sorting algorithms.",count:4,link:"unit6.html"},
+  {num:7,icon:"code",title:"Introduction to Python",desc:"Print, comments, variables, arithmetic and selection.",count:4,link:"unit7.html"},
+  {num:8,icon:"table",title:"Spreadsheets",desc:"Formatting, formulas, profit, models, functions and charts.",count:5,link:"unit8.html"}
 ];
 function homepage(){
   return '<section class="hero homepage-hero"><div class="eyebrow">Year 7 · Computer Science</div><h1>Missed a lesson? Catch up here.</h1><p>Find your unit, choose the lesson you missed, and work through the essentials independently. Every lesson includes clear help, questions and printable evidence.</p><div class="steps"><span class="step">1. Choose a unit</span><span class="step">2. Choose a lesson</span><span class="step">3. Learn and practise</span><span class="step">4. Check and print</span></div></section>'
   +'<section class="panel unit-overview"><div class="unit-section-head"><div><span class="pill">Year 7</span><h2 style="margin-top:12px">Choose your unit</h2><p class="muted">Eight units, with a separate catch-up activity for every taught lesson.</p></div><span class="unit-total">28 catch-up lessons</span></div><div class="grid unit-selection-grid">'
-  +unitCards.map(u=>'<article class="lesson-card unit-card"><div class="unit-top"><span class="unit-number" aria-hidden="true">'+u.num+'</span><span class="unit-count">'+u.count+' '+(u.count===1?"lesson":"lessons")+'</span></div><h3>Unit '+u.num+': '+safeText(u.title)+'</h3><p class="unit-summary">'+safeText(u.desc)+'</p><a class="btn unit-cta" href="'+u.link+'" aria-label="Choose a lesson from Unit '+u.num+': '+safeText(u.title)+'">Choose a lesson <span aria-hidden="true">→</span></a></article>').join("")
+  +unitCards.map(u=>'<article class="lesson-card unit-card"><div class="unit-top"><span class="ll-icon" data-ll-icon="'+u.icon+'" aria-hidden="true"></span><span class="unit-count">'+u.count+' '+(u.count===1?"lesson":"lessons")+'</span></div><h3>Unit '+u.num+': '+safeText(u.title)+'</h3><p class="unit-summary">'+safeText(u.desc)+'</p><a class="btn unit-cta" href="'+u.link+'" aria-label="Choose a lesson from Unit '+u.num+': '+safeText(u.title)+'">Choose a lesson <span aria-hidden="true">→</span></a></article>').join("")
   +'</div></section><section class="panel next-steps"><h2>How to catch up</h2><p><strong>Choose the lesson you missed.</strong> Enter your name, read the explanations and worked examples, then complete the questions. Mark your knowledge check and print or save your work for your Computer Science folder.</p><div class="hint"><strong>Stuck? Get some help here...</strong> Every lesson contains examples and support. Re-read these before trying again.</div></section>';
 }
 function unit1Page(){
@@ -133,4 +133,4 @@ function printMarkup(k){let l=lessons[k];return '<h1>Lost Learning - Catchup Wor
 function printLesson(){if(!studentName){render();return}document.getElementById("printSheet").innerHTML=printMarkup(current);window.print()}
 window.addEventListener("hashchange",()=>{let hash=location.hash.slice(1);if(["learn","examples","quiz","finish"].includes(hash))return;render()});
 render();
-</script></body></html>
+</script><script src="icons.js"></script></body></html>
